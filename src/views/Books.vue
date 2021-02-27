@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div class="books-container">
     <div v-for="book of books" :key="book.id">
-      <app-book :title="book.title"></app-book>
+      <app-book
+        :title="book.title"
+        :cover="book.cover"
+        :price="book.price"
+      ></app-book>
     </div>
   </div>
 </template>
@@ -26,3 +30,9 @@ export default class Books extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.books-container {
+  display: flex;
+}
+</style>
