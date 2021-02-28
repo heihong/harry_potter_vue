@@ -1,11 +1,7 @@
 <template>
   <div class="books-container">
-    <div v-for="book of books" :key="book.id">
-      <app-book
-        :title="book.title"
-        :cover="book.cover"
-        :price="book.price"
-      ></app-book>
+    <div v-for="book of books" :key="book.isbn">
+      <app-book :book="book"></app-book>
     </div>
   </div>
 </template>

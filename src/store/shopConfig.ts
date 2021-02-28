@@ -1,4 +1,4 @@
-import { RootState, ShopState } from "./types";
+import { Book, RootState, ShopState } from "./types";
 import { Module, MutationTree, GetterTree, ActionTree } from "vuex";
 import axios from "axios";
 
@@ -14,6 +14,12 @@ export const initialState: ShopState = {
 const mutations: MutationTree<ShopState> = {
   setBooks(state, books) {
     state.books = books;
+  },
+  addToCart(state, book) {
+    state.cart.push(book);
+  },
+  deleteBook(state, index) {
+    state.cart.splice(+index, 1);
   },
 };
 

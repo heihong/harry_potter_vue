@@ -3,7 +3,7 @@
     <p>{{ book.title }}</p>
     <p>{{ book.cover }}</p>
     <p>{{ book.price }} €</p>
-    <button @click="addToCart(book)">ajouter</button>
+    <button @click="deleteBook(index)">supprimer</button>
   </div>
 </template>
 
@@ -15,9 +15,10 @@ import { Mutation } from "vuex-class";
 @Component({
   components: {},
 })
-export default class BookDetail extends Vue {
+export default class BookDetailCart extends Vue {
   @Prop() public book!: Book;
-  @Mutation public addToCart!: (book: Book) => void;
+  @Prop() public index!: string;
+  @Mutation public deleteBook!: (index: string) => void;
 }
 </script>
 
