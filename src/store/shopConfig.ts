@@ -25,10 +25,12 @@ const mutations: MutationTree<ShopState> = {
 
 const actions: ActionTree<ShopState, RootState> = {
   getBooks({ commit }) {
-    axios.get("data.json").then((response) => {
-      const books = response.data.books;
-      commit("setBooks", books);
-    });
+    setTimeout(function() {
+      axios.get("data.json").then((response) => {
+        const books = response.data.books;
+        commit("setBooks", books);
+      });
+    }, 3000);
   },
 };
 

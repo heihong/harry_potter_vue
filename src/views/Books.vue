@@ -1,7 +1,10 @@
 <template>
-  <div class="books-container">
-    <div v-for="book of books" :key="book.isbn">
-      <app-book :book="book"></app-book>
+  <div>
+    <div v-if="books.length === 0">loader...</div>
+    <div class="books-container" v-if="books.length !== 0">
+      <div v-for="book of books" :key="book.isbn">
+        <app-book :book="book"></app-book>
+      </div>
     </div>
   </div>
 </template>
