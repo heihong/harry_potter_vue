@@ -21,6 +21,7 @@ export type Offer = OfferPercentageMinus | OfferSlice;
 
 export interface ShopState {
   books: Book[];
+  allBooks: Book[];
   isLoading: boolean;
   cart: Book[];
   totalAmount: number;

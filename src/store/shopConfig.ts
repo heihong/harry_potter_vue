@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const initialState: ShopState = {
   books: [],
+  allBooks: [],
   isLoading: false,
   cart: [],
   totalAmount: 0,
@@ -15,11 +16,19 @@ const mutations: MutationTree<ShopState> = {
   setBooks(state, books) {
     state.books = books;
   },
+  setAllBook(state, books) {
+    state.books = books;
+  },
   addToCart(state, book) {
     state.cart.push(book);
   },
   deleteBook(state, index) {
     state.cart.splice(+index, 1);
+  },
+};
+export const getters: GetterTree<ShopState, RootState> = {
+  filterBook(state, search) {
+    state.books.filter((el) => el.title.includes(search));
   },
 };
 
@@ -29,6 +38,7 @@ const actions: ActionTree<ShopState, RootState> = {
       axios.get("data.json").then((response) => {
         const books = response.data.books;
         commit("setBooks", books);
+        commit("setAllBook", books);
       });
     }, 3000);
   },
