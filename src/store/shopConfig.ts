@@ -16,9 +16,6 @@ const mutations: MutationTree<ShopState> = {
   setBooks(state, books) {
     state.books = books;
   },
-  setAllBook(state, books) {
-    state.books = books;
-  },
   addToCart(state, book) {
     state.cart.push(book);
   },
@@ -38,7 +35,6 @@ const actions: ActionTree<ShopState, RootState> = {
       axios.get("data.json").then((response) => {
         const books = response.data.books;
         commit("setBooks", books);
-        commit("setAllBook", books);
       });
     }, 3000);
   },

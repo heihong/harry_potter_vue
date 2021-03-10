@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div v-if="books.length === 0">loader...</div>
-    <input type="text" v-model="search" placeholder="edit me" />
+    <div class="margin">
+      <div v-if="books.length === 0">loader...</div>
+      <input type="text" v-model="search" placeholder="edit me" />
+    </div>
     <div class="books-container" v-if="books.length !== 0">
       <div v-for="book of filterBook()" :key="book.isbn">
         <app-book :book="book"></app-book>
@@ -28,7 +30,6 @@ export default class Books extends Vue {
   @Action public getBooks!: () => void;
   @Mutation public setBooks!: (books: Book[]) => void;
   @State((state) => state.shopConfig.books) public books!: Book[];
-  @State((state) => state.shopConfig.allBook) public allBook!: Book[];
   public search = "";
 
   public mounted() {
@@ -45,6 +46,9 @@ export default class Books extends Vue {
 </script>
 
 <style scoped>
+.margin {
+  margin: 10px;
+}
 .books-container {
   display: flex;
 }
