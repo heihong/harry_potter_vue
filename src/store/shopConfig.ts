@@ -4,12 +4,7 @@ import axios from "axios";
 
 export const initialState: ShopState = {
   books: [],
-  allBooks: [],
-  isLoading: false,
   cart: [],
-  totalAmount: 0,
-  offers: [],
-  minPrices: 0,
 };
 
 const mutations: MutationTree<ShopState> = {
@@ -24,8 +19,8 @@ const mutations: MutationTree<ShopState> = {
   },
 };
 export const getters: GetterTree<ShopState, RootState> = {
-  filterBook(state, search) {
-    state.books.filter((el) => el.title.includes(search));
+  totalAmount(state) {
+    return state.cart.reduce((acc, b) => acc + b.price, 0);
   },
 };
 
@@ -44,4 +39,5 @@ export const shopConfig: Module<ShopState, RootState> = {
   state: initialState,
   actions,
   mutations,
+  getters,
 };
